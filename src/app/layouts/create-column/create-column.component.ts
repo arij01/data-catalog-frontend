@@ -14,8 +14,9 @@ import { NotificationService } from 'src/app/notifications/notification.service'
 export class CreateColumnComponent implements OnInit {
   createForm!: FormGroup;
   columns!: Column[];
+  // documentations!:Documentation[];
 
-  constructor(private httpService: HttpService, private fb: FormBuilder,private notificationService:NotificationService,private http:DocService) { }
+  constructor(private httpService: HttpService,private docService: DocService, private fb: FormBuilder,private notificationService:NotificationService) { }
 
   ngOnInit(): void {
     this.createForm = this.fb.group({
@@ -24,10 +25,13 @@ export class CreateColumnComponent implements OnInit {
       type: ['', Validators.required],
       label: [null],
       businessKey: [null],
-      documentation: [this.http.getDocumentationById('65d8dc460db71457d5619cfe'),Validators.required],
+      champResultant: [null],
+      // documentation: [Documentation],
     });
-   
-    
+    this.httpService.getAlL().subscribe(columns => this.columns = columns);
+    // this.docService.getAllDocumentations().subscribe(documentations => {
+    //   this.documentations = documentations;
+    // });
   }
 
   handelSubmit(): void {

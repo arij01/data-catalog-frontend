@@ -11,26 +11,24 @@ export class Column {
 
     // Reflexive relationship
     businessKey: string;
+    champResultant: string;
     //Relation
+    // @OneToOne(() => Documentation, { cascade:false })
+    // documentation: Documentation;
     
-    
-    @OneToOne(() => Documentation, { cascade:false })
-    documentation: Documentation;
-    
-    constructor(id: string, nom: string, synonyme: string, type: string,businessKey: string, label: Label, documentation: Documentation) {
+    constructor(id: string, nom: string, synonyme: string, type: string,businessKey: string, label: Label,champResultant:string) {
         this.id = id;
         this.nom = nom;
         this.synonyme = synonyme;
         this.type = type;
         this.label = label;
         this.businessKey = businessKey;
-        this.documentation = documentation;
+        this.champResultant=champResultant;
+        // this.documentation = documentation;
     }
    
 
 
 }
 
-function OneToOne(arg0: () => typeof Documentation, arg1: { cascade: boolean; }): (target: Column, propertyKey: "documentation") => void {
-    throw new Error("Function not implemented.");
-}
+

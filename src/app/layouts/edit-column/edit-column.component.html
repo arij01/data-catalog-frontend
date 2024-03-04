@@ -38,18 +38,29 @@
     Type is required.
   </div>
 </div>
+<div class="col-12">
+  <label for="inputBusinessKey4" class="form-label">Clé d'affaire</label>
+  <select class="form-control" id="inputBusinessKey4" formControlName="businessKey">
+    <option value="">N/A</option>
+    <option *ngFor="let column of columns" [value]="column.nom">
+      {{ column.nom }}
+    </option>
+  </select>
+</div>
+  <div class="col-12">
+    <label for="inputCR4" class="form-label">Champ Résultant</label>
+    <input type="text" class="form-control" id="inputCR4" formControlName="champResultant">
+  </div>
 
-<!-- Label Field with Validation Message -->
+<!-- Label Field -->
 <div class="col-12">
   <label for="inputLabel4" class="form-label">Label</label>
   <select class="form-control" id="inputLabel4" formControlName="label">
+    <option value="">N/A</option>
     <option value="confidentiel">confidentiel</option>
     <option value="personnel">Personnel</option>
     <option value="personnel_sensible">Personnel sensible</option>
   </select>
-  <div *ngIf="editForm.get('label')?.hasError('required') && editForm.get('label')?.touched" class="text-danger">
-    Label is required.
-  </div>
 </div>
 
 <br>
@@ -59,8 +70,7 @@
 <div class="text-center">
   <button type="submit" class="btn btn-primary">Submit</button>
 </div>
-
-    </form>
+</form>
     <button type="button" class="btn btn-link" (click)="delete()">Delete</button>
     </div>
   </div>

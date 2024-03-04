@@ -16,6 +16,7 @@ export class EditColumnComponent implements OnInit {
   editForm!: FormGroup;
   toEditColumn!: Column;
   id!: string | null;
+  columns!: Column[];
 
   constructor(private httpService: HttpService, private fb: FormBuilder, private rout: ActivatedRoute, private router: Router,private notificationService:NotificationService) { }
 
@@ -30,6 +31,7 @@ export class EditColumnComponent implements OnInit {
     } else {
       this.router.navigate(['/columns']);
     }
+    this.httpService.getAlL().subscribe(columns => this.columns = columns);
   }
 
   updateForm(): void {
@@ -38,6 +40,8 @@ export class EditColumnComponent implements OnInit {
       nom: [this.toEditColumn.nom, Validators.required],
       synonyme: [this.toEditColumn.synonyme,Validators.required],
       type: [this.toEditColumn.type, Validators.required],
+      businessKey: [this.toEditColumn.businessKey],
+      champResultant: [this.toEditColumn.champResultant],
       label: [null],
     });
   }

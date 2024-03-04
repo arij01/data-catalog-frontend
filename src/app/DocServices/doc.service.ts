@@ -10,9 +10,9 @@ export class DocService {
   url: string = 'http://localhost:8081/api/documentations'
 
   constructor(private http:HttpClient) { }
-  // public saveDocumentation(documentation: Documentation): Observable<Documentation> {
-  //   return this.http.post<Documentation>(this.url, documentation);
-  // }
+  public saveDocumentation(documentation: Documentation): Observable<Documentation> {
+    return this.http.post<Documentation>(this.url, documentation);
+  }
   public getAllDocumentations():Observable<Documentation[]>{
     return this.http.get<Documentation[]>(this.url);
   }

@@ -35,7 +35,10 @@
             {{ column.nom }}
           </option>
         </select>
-        
+        <div class="col-12">
+          <label for="inputCR4" class="form-label">Champ Résultant</label>
+          <input type="text" class="form-control" id="inputCR4" formControlName="champResultant">
+        </div>
       </div>
       <div class="col-12">
         <label for="inputLabel4" class="form-label">Label</label>
@@ -50,7 +53,7 @@
         <label for="inputDoc4" class="form-label">Documentation</label>
         <select class="form-control" id="inputDoc4" formControlName="documentation">
           <option value=""> </option>
-          <option *ngFor="let d of documentations" [value]="d">
+          <option *ngFor="let d of documentations" [value]="d.id">
             {{ d.title}}
           </option>
         </select>
