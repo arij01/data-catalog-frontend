@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  <main id="main" class="main">
+  <div class="card">
+  <div class="card-body">
+    <h2 class="card-title">Modifier la politique de confidentialité</h2>
+    <form [formGroup]="editForm" (ngSubmit)="handelSubmitUpdate()">
+  <!-- ID Field (Read-only) -->
+  <div class="col-12" hidden>
+    <label for="inputId4" class="form-label">ID</label>
+    <input type="text" class="form-control" id="inputId4" formControlName="id" readonly>
+  </div>
+
+<!-- Title Field with Validation Message -->
+<div class="col-12">
+  <label for="inputNom4" class="form-label">Titre</label>
+  <input type="text" class="form-control" id="inputTitle4" formControlName="title">
+  <div *ngIf="editForm.get('title')?.hasError('required') && editForm.get('title')?.touched" class="text-danger">
+    title is required.
+  </div>
+</div>
+
+<!-- createdAt Field with Validation Message and Datepicker -->
+<div class="col-12">
+  <label for="inputCreatedAt4" class="form-label">Date de création:</label>
+  <input matInput [matDatepicker]="picker1" formControlName="createdAt" id="inputCreatedAt4">
+  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+  <mat-datepicker #picker1></mat-datepicker>
+  <div *ngIf="editForm.get('createdAt')?.hasError('required') && editForm.get('createdAt')?.touched" class="text-danger">
+    Created At is required.
+  </div>
+</div>
+
+<!-- lastUpdated Field with Validation Message and Datepicker -->
+<div class="col-12">
+  <label for="inputLastUpdated4" class="form-label">Dernier modification:</label>
+  <input matInput [matDatepicker]="picker2" formControlName="lastUpdated" id="inputLastUpdated4">
+  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+  <mat-datepicker #picker2></mat-datepicker>
+  <div *ngIf="editForm.get('lastUpdated')?.hasError('required') && editForm.get('lastUpdated')?.touched" class="text-danger">
+    Last Updated is required.
+  </div>
+</div>
+
+<!-- Text Field with Validation Message -->
+<div class="col-12">
+  <label for="inputType4" class="form-label">Text</label>
+  <textarea class="form-control" id="inputType4" formControlName="text" rows="10" cols="50" [value]="toEditColumn.text | breakLines"></textarea>
+  <div *ngIf="editForm.get('text')?.hasError('required') && editForm.get('text')?.touched" class="text-danger">
+    text is required.
+  </div>
+</div>
+<br>
+<br>
+
+<div class="text-center">
+  <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+
+    </form>
+ 
+    </div>
+  </div>
+  </main>
+
+</body>
+

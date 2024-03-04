@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  <main id="main" class="main">
+    <div class="card">
+    <div class="card-body">
+    <h5 class="card-title">Ajouter un Champ</h5>
+    <form [formGroup]="createForm" (ngSubmit)="handelSubmit()">
+      <div class="col-12">
+        <label for="inputName4" class="form-label">Nom</label>
+        <input type="text" class="form-control" id="inputName4" formControlName="nom">
+        <div *ngIf="createForm.get('nom')?.hasError('required') && createForm.get('nom')?.touched" class="text-danger">
+          Nom is required.
+        </div>
+      </div>
+      <div class="col-12">
+        <label for="inputSynonyme4" class="form-label">Synonyme</label>
+        <input type="text" class="form-control" id="inputSynonyme4" formControlName="synonyme">
+        <div *ngIf="createForm.get('synonyme')?.hasError('required') && createForm.get('synonyme')?.touched" class="text-danger">
+          Synonyme is required.
+        </div>
+      </div>
+      <div class="col-12">
+        <label for="inputType4" class="form-label">Type</label>
+        <input type="text" class="form-control" id="inputType4" formControlName="type">
+        <div *ngIf="createForm.get('type')?.hasError('required') && createForm.get('type')?.touched" class="text-danger">
+          Type is required.
+        </div>
+      </div>
+      <div class="col-12">
+        <label for="inputBusinessKey4" class="form-label">Clé d'affaire</label>
+        <select class="form-control" id="inputBusinessKey4" formControlName="businessKey">
+          <option value="">N/A</option>
+          <option *ngFor="let column of columns" [value]="column.nom">
+            {{ column.nom }}
+          </option>
+        </select>
+        
+      </div>
+      <div class="col-12">
+        <label for="inputLabel4" class="form-label">Label</label>
+        <select class="form-control" id="inputLabel4" formControlName="label">
+          <option value="">N/A</option>
+          <option value="confidentiel">confidentiel</option>
+          <option value="personnel">personnel</option>
+          <option value="personnel_sensible">personnel_sensible</option>
+        </select>
+      </div>
+      <!-- <div class="col-12">
+        <label for="inputDoc4" class="form-label">Documentation</label>
+        <select class="form-control" id="inputDoc4" formControlName="documentation">
+          <option value=""> </option>
+          <option *ngFor="let d of documentations" [value]="d">
+            {{ d.title}}
+          </option>
+        </select>
+        <div *ngIf="createForm.get('documentation')?.hasError('required') && createForm.get('documentation')?.touched" class="text-danger">
+          Documentation required.
+        </div>
+      </div> -->
+      
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+    </div>
+    </div>
+  </main>
+
+</body>
+

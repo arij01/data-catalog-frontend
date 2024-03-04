@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<main id="main" class="main">
+  <div class="card">
+  <div class="card-body">
+  <h2 class="card-title">Table Des Champs</h2>
+<button type="button" class="btn btn-link" (click)="add()">Ajouter un champ</button>
+
+<!-- <button type="button" class="btn btn-link" (click)="add()">Modifier la table</button> -->
+<!-- search -->
+<!-- <div class="search-bar input-group mb-3">
+  <input type="text" class="form-control" placeholder="Recherche par label" [(ngModel)]="searchTerm" (ngModelChange)="search()">
+
+</div> -->
+<!-- end search -->
+<!-- search -->
+<div class="search-bar input-group mb-3">
+  <input type="text" class="form-control" placeholder="Recherche par label" [(ngModel)]="searchTerm" (ngModelChange)="search()">
+  <!-- <button type="button" class="btn btn-primary" (click)="search()">Rechercher</button> -->
+</div>
+<!-- end search -->
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <!-- <th scope="col">ID</th> -->
+        <th scope="col">Nom</th>
+        <th scope="col">Synonyme</th>
+        <th scope="col">Type</th>
+        <th scope="col">clé d'affaire</th>
+        <th scope="col">Label</th>
+        <th scope="col">Documentation</th>
+        <!-- <th scope="col">Update</th> -->
+      </tr>
+    </thead>
+    <tbody>
+        
+          <tr *ngFor="let column of ListOfColumns.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)" [routerLink]="'/columns/edit/' + column.id">
+            <!-- <th scope="row">{{column.id}}</th> -->
+            <td>{{column.nom}}</td>
+            <td>{{column.synonyme}}</td>
+            <td>{{column.type}}</td>
+            <td>{{column.businessKey}}</td>
+            <td>{{column.label}}</td>
+            <td>{{column.documentation}}</td>
+            <!-- <td><button type="button" class="btn btn-warning" (click)="onEdit(column.id)">edit</button></td> -->
+            
+          </tr>
+    </tbody>
+  </table>
+       <!-- Pagination with icons -->
+     <div>
+        <ul class="pagination">
+          <li class="page-item" *ngFor="let page of getPages()">
+              <a class="page-link" (click)="changePage(page)">{{ page }}</a>
+          </li>
+      </ul>
+    </div>   
+    <!-- End Pagination with icons -->
+  </div>
+  </div>
+</main>
+</body>
+  
