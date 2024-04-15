@@ -5,6 +5,8 @@ import { takeUntil } from 'rxjs/operators';
 import { DocService } from 'src/app/DocServices/doc.service';
 import { Documentation } from 'src/app/model/documentation';
 
+import html2pdf from 'html2pdf.js';
+
 @Component({
   selector: 'app-get-doc',
   templateUrl: './get-doc.component.html',
@@ -46,4 +48,18 @@ export class GetDocComponent implements OnInit, OnDestroy {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
+  generatePDF(): void {
+    const element = document.getElementById('main'); // Assuming you have an element with id 'main' in your template
+    if (element) {
+      const opt = {
+        margin:       1,
+        filename:     'documentation.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2 },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+      };
+      html2pdf().from(element).set(opt).save();
+    }
+  }
 }
+

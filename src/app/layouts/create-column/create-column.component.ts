@@ -26,12 +26,10 @@ export class CreateColumnComponent implements OnInit {
       label: [null],
       businessKey: [null],
       champResultant: [null],
-      // documentation: [Documentation],
+      
     });
     this.httpService.getAlL().subscribe(columns => this.columns = columns);
-    // this.docService.getAllDocumentations().subscribe(documentations => {
-    //   this.documentations = documentations;
-    // });
+    
   }
 
   handelSubmit(): void {
