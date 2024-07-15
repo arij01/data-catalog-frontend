@@ -60,6 +60,9 @@ export class GetDocComponent implements OnInit, OnDestroy {
       };
       html2pdf().from(element).set(opt).save();
     }
+    
+    
   }
+   
 }
 
